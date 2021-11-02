@@ -41,6 +41,7 @@ main (int argc, char* argv[])
 
 
     /* Do your magic here :) */
+    printf("Hello World!\n");
 
 
     return EXIT_SUCCESS;
