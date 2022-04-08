@@ -8,3 +8,5 @@ tasks:
 vscode:
   extensions:
     - ms-vscode.makefile-tools
+    - jbenden.c-cpp-flylint
+    - notskm.clang-tidy

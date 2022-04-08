@@ -122,7 +122,7 @@ start:
 	@cp -rvf ./* $(PROJECT_PATH)/
 	@echo
 	@echo "Go to $(PROJECT_PATH) and compile your project: make"
-	@echo "Then execute it: bin/$(BINARY) --help"
+	@echo "Then execute it: bin/$(BINARY)"
 	@echo "Happy hacking o/"
 
 
