@@ -38,10 +38,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_LINES 100
+#define MAX_PEOPLE 200
+
+int index_of_shortest(int* lines, int num_lines);
+
 int main () {
     int n = 0, m = 0;
-    int lines[100];
-    int people[100];
+    int lines[MAX_LINES];
 
     scanf("%d %d", &n, &m);
 
@@ -49,37 +53,24 @@ int main () {
         scanf("%d", lines + i);
     }
 
-//Debugging info
-    printf("There are %d lines and %d people want to join.\n", n, m);
-
-    printf("Lines: ");
-    for(int i=0; i < n; i++) {
-        printf("%d ", lines[i]);
-    }
-    printf("\n");
-
-// for each person in m determine what line they will be in and write that to people[m]
-    for(int i = 0; i < m; i++){
-        //which line is the shortest
-        int numPeople = 201; //max number of people in a line is 200, this is one greater so it is always replaced
-        int linenum = 101; //max number of lines is 100
-        for(int j = 0; j < n; j++){
-            if (lines[j] < numPeople){
-                numPeople = lines[j];
-                linenum = j;
-            }
-        }
-        //now line #linenum has the number of the shortest line with numPeople people
-        //person i joins the line with #numPeople in front of them
-        people[i] = numPeople;
-        //and that line gets longer
-        lines[linenum]++;
-    }
-
-    //print the output
-    for(int i = 0; i < m; i++){
-        printf("%d\n", people[i]);
+    for(int i = 0; i < m; i++) {
+        int ind = 0, len = 0;
+        ind = index_of_shortest(lines, n);
+        len = lines[ind];
+        printf("%d\n", len);
+        lines[ind]++;
     }
 
     return EXIT_SUCCESS;
+}
+
+int index_of_shortest(int* lines, int num_lines){
+    int index = 0, shortest = MAX_PEOPLE;
+    for(int i = 0; i < num_lines; i++){
+        if(lines[i] < shortest){
+            shortest = lines[i];
+            index = i;
+        }
+    }
+    return index;
 }

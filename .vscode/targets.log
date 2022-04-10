@@ -1,0 +1,511 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sat Apr  9 16:56:01 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+RUBY_VERSION = ruby-2.7.4
+# automatic
+?F = $(notdir $?)
+# environment
+GP_OPEN_EDITOR = /ide/bin/remote-cli/gitpod-code
+# default
+.SHELLFLAGS := -c
+# environment
+VSCODE_LOG_NATIVE = false
+# makefile (from 'Makefile', line 70)
+STACK := -fstack-protector-all -Wstack-protector
+# environment
+VSX_REGISTRY_URL = https://open-vsx.gitpod.io
+# environment
+GRADLE_HOME = /home/gitpod/.sdkman/candidates/gradle/current
+# environment
+rvm_path = /home/gitpod/.rvm
+# environment
+SUPERVISOR_ADDR = localhost:22999
+# environment
+SUPERVISOR_ENVVAR_OTS = https://gitpod.io/api/ots/get/7fc054ab-80f5-46aa-be36-ad65fa8aabf9
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /workspace/algorithmic_thinking
+# makefile (from 'Makefile', line 34)
+SHELL := bash
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-US","availableLanguages":{}}
+# environment
+_ = /ide/node
+# makefile (from 'Makefile', line 76)
+CFLAGS := -O3 -std=gnu99  -fstack-protector-all -Wstack-protector -Wall -Wextra -pedantic 
+# environment
+GITPOD_THEIA_PORT = 23000
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+GITPOD_ANALYTICS_WRITER = segment
+# environment
+GO_VERSION = 1.17.2
+# makefile (from 'Makefile', line 73)
+WARNS := -Wall -Wextra -pedantic 
+# environment
+MAVEN_HOME = /home/gitpod/.sdkman/candidates/maven/current
+# makefile (from 'project.conf', line 1)
+MAKEFILE_LIST :=  Makefile project.conf
+# makefile (from 'Makefile', line 55)
+TESTDIR := test
+# environment
+GITPOD_WORKSPACE_CONTEXT_URL = https://github.com/keydelk/algorithmic_thinking
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from 'Makefile', line 95)
+NAMES := main
+# environment
+THEIA_WORKSPACE_ROOT = /workspace/algorithmic_thinking
+# environment
+INFOPATH = :/home/linuxbrew/.linuxbrew/share/info
+# makefile (from 'Makefile', line 44)
+BROWN = \$(COLOR_PREFIX)[0;33m
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+GIT_EDITOR = /ide/bin/remote-cli/gitpod-code --wait
+# environment
+VSCODE_CWD = /ide
+# makefile (from 'Makefile', line 45)
+BLUE = \$(COLOR_PREFIX)[1;34m
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /ide/bin/remote-cli:/home/gitpod/.pyenv/plugins/pyenv-virtualenv/shims:/home/gitpod/.sdkman/candidates/maven/current/bin:/home/gitpod/.sdkman/candidates/java/current/bin:/home/gitpod/.sdkman/candidates/gradle/current/bin:/home/gitpod/.rvm/gems/ruby-2.7.4/bin:/home/gitpod/.rvm/gems/ruby-2.7.4@global/bin:/home/gitpod/.rvm/rubies/ruby-2.7.4/bin:/home/gitpod/.pyenv/plugins/pyenv-virtualenv/shims:/ide/bin/remote-cli:/workspace/.cargo/bin:/workspace/.rvm/bin:/workspace/.pip-modules/bin:/home/gitpod/.pyenv/bin:/home/gitpod/.pyenv/shims:/workspace/go/bin:/home/gitpod/go/bin:/home/gitpod/go-packages/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:/home/gitpod/.nvm/versions/node/v16.13.0/bin:/home/gitpod/.cargo/bin:/usr/games:/usr/games:/home/gitpod/.nvm/versions/node/v16.13.0/bin:/home/gitpod/.rvm/bin:/home/gitpod/.nvm/versions/node/v16.13.0/bin:/home/gitpod/.nvm/versions/node/v16.13.0/bin
+# environment
+GITPOD_WORKSPACE_ID = copper-angelfish-z952j3bh
+# environment
+GITPOD_INTERVAL = 30000
+# environment
+CARGO_HOME = /workspace/.cargo
+# environment
+rvm_stored_umask = 0022
+# environment
+GITPOD_WORKSPACE_CLUSTER_HOST = ws-us39.gitpod.io
+# environment
+GITPOD_ANALYTICS_SEGMENT_KEY = bUY8IRdJ42KjLOBS9LoIHMYFBD8rSzjU
+# environment
+SDKMAN_DIR = /home/gitpod/.sdkman
+# makefile (from 'Makefile', line 79)
+DEBUG := -g3 -DDEBUG=1
+# environment
+SDKMAN_CANDIDATES_API = https://api.sdkman.io/2
+# environment
+GOPATH = /workspace/go
+# makefile (from 'Makefile', line 90)
+TEST_BINARY := binary_test_runner
+# makefile (from 'Makefile', line 53)
+LOGDIR := log
+# environment
+SDKMAN_PLATFORM = linuxx64
+# environment
+VSCODE_LOG_STACK = false
+# makefile (from 'Makefile', line 85)
+TEST_LIBS := -l cmocka -L /usr/lib
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-5e48d138-e4ea-4175-870a-37444f2e29fa.sock
+# makefile (from 'Makefile', line 46)
+END_COLOR = \$(COLOR_PREFIX)[0m
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# makefile (from 'Makefile', line 52)
+SRCDIR := src
+# automatic
+%F = $(notdir $%)
+# environment
+GP_PREVIEW_BROWSER = /ide/bin/remote-cli/gitpod-code --preview
+# environment
+VISUAL = /ide/bin/remote-cli/gitpod-code
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+rvm_bin_path = /home/gitpod/.rvm/bin
+# environment
+WORKSPACEKIT_WRAP_NETNS = true
+# default
+.LOADED := 
+# environment
+GEM_HOME = /home/gitpod/.rvm/gems/ruby-2.7.4
+# environment
+MANPATH = :/home/linuxbrew/.linuxbrew/share/man
+# environment
+NODE_VERSION = 16.13.0
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+PYENV_SHELL = bash
+# environment
+HOME = /home/gitpod
+# environment
+THEIA_WEBVIEW_EXTERNAL_ENDPOINT = webview-{{hostname}}
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# makefile (from 'project.conf', line 17)
+BINARY := binary
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+GITPOD_CLI_APITOKEN = 2-l-cf1qaeL7vRMshpCQnac8cN7Dysep
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+HOSTNAME = copper-angelfish-z952j3bh
+# makefile (from 'project.conf', line 23)
+PROJECT_PATH := /workspace/algorithmic_thinking
+# environment
+GRADLE_USER_HOME = /workspace/.gradle/
+# environment
+MAKELEVEL := 0
+# environment
+GEM_PATH = /home/gitpod/.rvm/gems/ruby-2.7.4:/home/gitpod/.rvm/gems/ruby-2.7.4@global
+# environment
+SDKMAN_VERSION = 5.13.0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+IRBRC = /home/gitpod/.rvm/rubies/ruby-2.7.4/.irbrc
+# environment
+SHLVL = 0
+# makefile (from 'Makefile', line 51)
+BINDIR := bin
+# makefile (from 'Makefile', line 63)
+CC := gcc
+# environment
+GITPOD_GIT_USER_NAME = keydelk
+# environment
+JAVA_HOME = /home/gitpod/.sdkman/candidates/java/current
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = gitpod
+# makefile
+.DEFAULT_GOAL := default
+# environment
+GOROOT = /home/gitpod/go
+# environment
+GITPOD_IDE_ALIAS = code
+# environment
+rvm_version = 1.29.12 (latest)
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+GITPOD_REPO_ROOT = /workspace
+# environment
+PIP_USER = no
+# environment
+THEIA_RATELIMIT_LOG = 50
+# environment
+THEIA_MINI_BROWSER_HOST_PATTERN = browser-{{hostname}}
+# environment
+TRIGGER_BREW_REBUILD = 4
+# environment
+GITPOD_GIT_USER_EMAIL = keydelk@gmail.com
+# default
+MAKE_COMMAND := make
+# makefile (from 'Makefile', line 67)
+STD := -std=gnu99 
+# environment
+OLDPWD = /
+# makefile (from 'Makefile', line 54)
+LIBDIR := lib
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile (from 'Makefile', line 31)
+OS := Linux
+# makefile (from 'project.conf', line 11)
+PROJECT_NAME := algorithmic_thinking
+# environment
+GITPOD_HOST = https://gitpod.io
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+NVM_DIR = /home/gitpod/.nvm
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+rvm_user_install_flag = 1
+# environment
+BROWSER = /ide/bin/helpers/browser.sh
+# environment
+GITPOD_MEMORY = 3435
+# makefile (from 'Makefile', line 59)
+SRCEXT := c
+# environment
+GITPOD_TASKS = [{"init":"make\n","command":"make help\n"}]
+# 'override' directive
+.SHELLSTATUS := 0
+# default
+MAKEFILES := 
+# environment
+GITPOD_CODE_HOST = https://gitpod.io
+# environment
+HOMEBREW_NO_AUTO_UPDATE = 1
+# automatic
+<F = $(notdir $<)
+# environment
+PIPENV_VENV_IN_PROJECT = true
+# environment
+TRIGGER_REBUILD = 1
+# environment
+GP_EXTERNAL_BROWSER = /ide/bin/remote-cli/gitpod-code --openExternal
+# environment
+SDKMAN_CANDIDATES_DIR = /home/gitpod/.sdkman/candidates
+# environment
+EDITOR = /ide/bin/remote-cli/gitpod-code
+# environment
+PWD = /workspace/algorithmic_thinking
+# environment
+LC_ALL = C
+# environment
+GITPOD_WORKSPACE_CONTEXT = {"isFile":false,"path":"","title":"keydelk/algorithmic_thinking - main","ref":"main","refType":"branch","revision":"9f6e8f7045186d0107ff6c91a4cb6bc70facf4d5","repository":{"cloneUrl":"https://github.com/keydelk/algorithmic_thinking.git","host":"github.com","name":"algorithmic_thinking","owner":"keydelk","private":false}}
+# environment
+JAVA_TOOL_OPTIONS =  -Xmx3435m
+# makefile (from 'Makefile', line 82)
+LIBS := 
+# automatic
+^F = $(notdir $^)
+# environment
+rvm_prefix = /home/gitpod
+# default
+SUFFIXES := 
+# environment
+APACHE_DOCROOT_IN_REPO = public
+# environment
+PYENV_VIRTUALENV_INIT = 1
+# makefile (from 'Makefile', line 37)
+COLOR_PREFIX := e
+# environment
+NGINX_DOCROOT_IN_REPO = public
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+rvm_loaded_flag = 1
+# environment
+GITPOD_INSTANCE_ID = 793b5ff2-31ba-4189-a563-373a59dc5acd
+# environment
+GITPOD_WORKSPACE_URL = https://copper-angelfish-z952j3bh.ws-us39.gitpod.io
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile', line 96)
+OBJECTS := lib/main.o
+# environment
+LANG = C
+# environment
+PYTHONUSERBASE = /workspace/.pip-modules
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+MY_RUBY_HOME = /home/gitpod/.rvm/rubies/ruby-2.7.4
+# variable set hash-table stats:
+# Load=159/1024=16%, Rehash=0, Collisions=20/226=9%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2346, inode 402664933): 19 files, no impossibilities.
+# src (device 2346, inode 939555342): 3 files, no impossibilities.
+
+# 22 files, no impossibilities in 2 directories.
+
+# Implicit Rules
+
+lib/%.o: src/%.c
+#  recipe to execute (from 'Makefile', line 139):
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+all: lib/main.o
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := lib/main.o
+# automatic
+# | := 
+# automatic
+# < := lib/main.o
+# automatic
+# ^ := lib/main.o
+# automatic
+# ? := lib/main.o
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=3/28=11%
+#  recipe to execute (from 'Makefile', line 131):
+	@echo -en "$(BROWN)LD $(END_COLOR)";
+	$(CC) -o $(BINDIR)/$(BINARY) $+ $(DEBUG) $(CFLAGS) $(LIBS)
+	@echo -en "\n--\nBinary file placed at" \
+			  "$(BROWN)$(BINDIR)/$(BINARY)$(END_COLOR)\n";
+
+tests:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 156):
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) $(TESTDIR)/main.c -o $(BINDIR)/$(TEST_BINARY) $(DEBUG) $(CFLAGS) $(LIBS) $(TEST_LIBS)
+	@which ldconfig && ldconfig -C /tmp/ld.so.cache || true # caching the library linking
+	@echo -en "$(BROWN) Running tests: $(END_COLOR)";
+	./$(BINDIR)/$(TEST_BINARY)
+
+lib/main.o: src/main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2021-11-11 20:07:49
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 139):
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-10 23:52:14
+#  File has been updated.
+#  Successfully updated.
+
+start:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 119):
+	@echo "Creating project: $(PROJECT_NAME)"
+	@mkdir -pv $(PROJECT_PATH)
+	@echo "Copying files from template to new directory:"
+	@cp -rvf ./* $(PROJECT_PATH)/
+	@echo
+	@echo "Go to $(PROJECT_PATH) and compile your project: make"
+	@echo "Then execute it: bin/$(BINARY)"
+	@echo "Happy hacking o/"
+
+# Not a target:
+project.conf:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-02 22:38:25
+#  File has been updated.
+#  Successfully updated.
+
+help:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 107):
+	@echo "C Project Template"
+	@echo
+	@echo "Target rules:"
+	@echo "    all      - Compiles and generates binary file"
+	@echo "    tests    - Compiles with cmocka and run tests binary file"
+	@echo "    start    - Starts a new project using C project template"
+	@echo "    valgrind - Runs binary file using valgrind tool"
+	@echo "    clean    - Clean the project by removing binaries"
+	@echo "    help     - Prints a help message with target rules"
+
+default: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-11 20:07:36
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 165):
+	@rm -rvf $(BINDIR)/* $(LIBDIR)/* $(LOGDIR)/*;
+
+valgrind:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 145):
+	valgrind \
+		--track-origins=yes \
+		--leak-check=full \
+		--leak-resolution=high \
+		--log-file=$(LOGDIR)/$@.log \
+		$(BINDIR)/$(BINARY)
+	@echo -en "\nCheck the log file: $(LOGDIR)/$@.log\n"
+
+# files hash-table stats:
+# Load=13/1024=1%, Rehash=0, Collisions=0/31=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 36 / storage = 301 B / avg = 8 B
+# current buf: size = 8162 B / used = 301 B / count = 36 / avg = 8 B
+
+# strcache performance: lookups = 56 / hit rate = 35%
+# hash-table stats:
+# Load=36/8192=0%, Rehash=0, Collisions=2/56=4%
+# Finished Make data base on Sat Apr  9 16:56:01 2022
+
+ 
