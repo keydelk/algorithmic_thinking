@@ -35,7 +35,7 @@ void indentify_compound_words(char *words[], word_node *hash_table[], int total_
 int main() {
     static char *words[1 << NUM_BITS] = {NULL};
     static word_node *hash_table[1 << NUM_BITS] = {NULL};
-    int total = 0;
+    int i, total = 0;
     char *word;
     word_node *wordptr;
     unsigned length, word_code;
@@ -58,7 +58,7 @@ int main() {
 
     indentify_compound_words(words, hash_table, total);
 
-    for(int i = 0; i < total; i++) {
+    for(i = 0; i < total; i++) {
         free(words[i]);
     }
 
@@ -119,9 +119,10 @@ int in_hash_table(word_node *hash_table[], char *find, unsigned find_len) {
 
 void indentify_compound_words(char *words[], word_node *hash_table[], int total_words) {
     unsigned len;
-    for (int i = 0; i < total_words; i++) {
+    int i, j;
+    for (i = 0; i < total_words; i++) {
         len = strlen(words[i]);
-        for (int j = 1; j < len; j++) {
+        for (j = 1; j < len; j++) {
             if (in_hash_table(hash_table, words[i], j) && in_hash_table(hash_table, &words[i][j], len - j)) {
                 printf("%s\n", words[i]);
                 break;
