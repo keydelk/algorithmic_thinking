@@ -1,7 +1,5 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/workspace/algorithmic_thinking'
-echo -en "\e[0;33mCC \e[0m";
-gcc -c src/main.c -o lib/main.o -g3 -DDEBUG=1 -O3 -std=gnu99  -fstack-protector-all -Wstack-protector -Wall -Wextra -pedantic  
 echo -en "\e[0;33mLD \e[0m";
 gcc -o bin/binary lib/main.o -g3 -DDEBUG=1 -O3 -std=gnu99  -fstack-protector-all -Wstack-protector -Wall -Wextra -pedantic  
 echo -en "\n--\nBinary file placed at" \

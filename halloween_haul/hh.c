@@ -1,20 +1,31 @@
-/* =========================================================
+/* ===========================================================
                     Halloween Haul
 
     You want to collect all the candy from a particular
     neighborhood as efficiently as possible. The neihborhood
     is a binary tree
 
-Input: 
+URL: https://dmoj.ca/problem/dwite12c1p4
+Input: The input will contain 5 test cases. Each test case 
+       is a line containing a single string, less than 256 
+       characters long, describing the tree your neighbourhood 
+       forms. 
 
-Output: 
+Output: The output will contain 5 lines of output, each a pair 
+        of integers  and .  is the minimum number of roads 
+        needed to be traversed to get all the candy (starting 
+        from the root (top) of the tree, and not needing to 
+        return).  represents the total amount of candy you'll 
+        collect.
         
-==========================================================*/
+=============================================================*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#define SIZE 256
+#define TEST_CASES 5
 
 typedef struct node {
     int candy;
@@ -31,21 +42,21 @@ int tree_leaves(node *tree);
 int tree_edges(node *tree);
 int tree_height(node *tree);
 int max(int a, int b);
+void tree_solve(node *tree);
+void tree_free(node *tree);
+
 
 int main(){
-    node *four = new_house(4);
-    node *nine = new_house(9);
-    node *B = new_nonhouse(four, nine);
-    node *fifteen = new_house(15);
-    node *C = new_nonhouse(B, fifteen);
-    
-    printf("C->left->right->candy: %d\n", C->left->right->candy);
-    printf("Node 4 candy: %d\nTree candy: %d\n", tree_candy(four), tree_candy(C));
-    printf("Tree nodes: %d\n", tree_nodes(C));
-    printf("Tree leaves: %d\n", tree_leaves(C));
-    printf("Tree edges: %d\n", tree_edges(C));
-    printf("Tree height: %d\n", tree_height(C));
-    printf("Shortest path: %d\n", 2*tree_edges(C) - tree_height(C));
+    int i;
+    char line[SIZE];
+    node *tree;
+
+    for (i = 0; i < TEST_CASES; i++) {
+        fgets(line, SIZE, stdin); 
+        tree = read_tree(line);
+        tree_solve(tree);
+        tree_free(tree);
+    }
 
     return EXIT_SUCCESS;
 }
@@ -104,6 +115,22 @@ int tree_height(node *tree) {
     return max(tree_height(tree->left), tree_height(tree->right)) + 1;
 }
 
+void tree_solve(node *tree) {
+    int candy = tree_candy(tree);
+    int num_streets = 2 * tree_edges(tree) - tree_height(tree);
+    printf("%d %d\n", num_streets, candy);
+    return;
+}
+
+void tree_free(node *tree) {
+    if (tree->left && tree->right){
+        tree_free(tree->left);
+        tree_free(tree->right);
+    }
+    free(tree);
+    return;
+}
+
 int max(int a, int b) {
     if (a > b)
         return a;
@@ -122,5 +149,22 @@ node *read_tree_helper(char *line, int *pos) {
         fprintf(stderr, "malloc error\n");
         exit(EXIT_FAILURE);
     }
-
+    if (line[*pos] == '(') {
+        (*pos)++;
+        tree->left = read_tree_helper(line, pos);
+        (*pos)++;
+        tree->right = read_tree_helper(line, pos);
+        (*pos)++;
+        return tree;
+    } else {
+        tree->left = NULL;
+        tree->right = NULL;
+        tree->candy = line[*pos] - '0';
+        (*pos)++;
+        if (line[*pos] != ')' && line[*pos] != ' ' && line[*pos] != '\0' && line[*pos] != '\n') {
+            tree->candy = tree->candy * 10 + line[*pos] - '0';
+            (*pos)++;
+        }
+        return tree;
+    }
 }
