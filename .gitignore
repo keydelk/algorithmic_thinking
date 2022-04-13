@@ -42,3 +42,7 @@
 # Project logs files
 /log/*
 !/log/.gitkeep
+
+# VSCode integration
+/.vscode/*
+!/.vscode/.gitkeep
