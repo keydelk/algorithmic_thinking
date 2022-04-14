@@ -21,7 +21,7 @@ Output: For each test case:
                 burgers, a space, and the number of remaining minutes (during which he’ll drink beer).
         The time limit for solving the cases is 3 seconds.
 
-This is the recursive solution from "Algorithmic Thinking: A Problem Based Introduction" by Daniel Zingaro
+This is the memoization solution from "Algorithmic Thinking: A Problem Based Introduction" by Daniel Zingaro
 ================================================================================================================*/
 
 #include <stdlib.h>
@@ -31,7 +31,7 @@ This is the recursive solution from "Algorithmic Thinking: A Problem Based Intro
 #define MAX 10000
 unsigned long long total_calls;
 
-int solve_t(int m, int n, int t);
+int solve_t(int m, int n, int t, int memo[]);
 int max(int a, int b);
 void solve(int m, int n, int t);
 
@@ -42,7 +42,7 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-int solve_t(int m, int n, int t) {
+int solve_t(int m, int n, int t, int memo[]) {
     int first, second;
     total_calls++;
     if (t == 0)
@@ -68,6 +68,9 @@ int max(int a, int b) {
 
 void solve(int m, int n, int t) {
     int result, i;
+    int memo[MAX];
+    for (i = 0; i <=t; i++)
+        memo[i] = -2;
     total_calls = 0;
     result = solve_t(m, n, t);
     if (result >= 0) {
