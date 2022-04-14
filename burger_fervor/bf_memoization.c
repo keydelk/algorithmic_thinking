@@ -45,19 +45,26 @@ int main() {
 int solve_t(int m, int n, int t, int memo[]) {
     int first, second;
     total_calls++;
-    if (t == 0)
-        return 0;
+    if (memo[t] != -2)
+        return memo[t];
+    if (t == 0) {
+        memo[t] = 0;
+        return memo[t];
+    }
     if (t >= m)
-        first = solve_t(m, n, t-m);
+        first = solve_t(m, n, t-m, memo);
     else
         first = -1;
     if (t >= n)
-        second = solve_t(m, n, t-n);
+        second = solve_t(m, n, t-n, memo);
     else
         second = -1;
-    if (first == -1 && second == -1)
-        return -1;
-    return max(first, second) + 1;
+    if (first == -1 && second == -1) {
+        memo[t] = -1;
+        return memo[t];
+    }
+    memo[t] = max(first, second) + 1;
+    return memo[t];
 }
 
 int max(int a, int b) {
@@ -72,15 +79,15 @@ void solve(int m, int n, int t) {
     for (i = 0; i <=t; i++)
         memo[i] = -2;
     total_calls = 0;
-    result = solve_t(m, n, t);
+    result = solve_t(m, n, t, memo);
     if (result >= 0) {
         printf("%d\n", result);
     } else {
         i = t-1;
-        result = solve_t(m, n, i);
+        result = solve_t(m, n, i, memo);
         while (result == -1) {
             i--;
-            result = solve_t(m, n, i);
+            result = solve_t(m, n, i, memo);
         }
         printf("%d %d\n", result, t - i);
     }
