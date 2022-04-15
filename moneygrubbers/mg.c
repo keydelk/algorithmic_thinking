@@ -33,6 +33,7 @@ Trying Allman style braces for this problem rather than the Kernel style.
 #include <string.h>
 
 #define MAX_PRICING_SCHEMES 20
+#define SIZE 200
 
 double min(double a, double b);
 
@@ -43,6 +44,20 @@ double solve(int num[], double price[], int num_schemes,
 
 int main()
 {
+    int test_case, num_schemes, num_items, more, i;
+    double unit_price, result;
+    int num[MAX_PRICING_SCHEMES];
+    double price[MAX_PRICING_SCHEMES];
+    test_case = 0;
+
+    while (scanf("%lf %d", &unit_price, &num_schemes) != 1)
+    {
+        test_case++;
+        for (i = 0; i < num_schemes; i++)
+            scanf("%d %lf", &num[i], &price[i]);
+        scanf(" "); // read in the newline
+
+    }
     return EXIT_SUCCESS;
 }
 
@@ -77,4 +92,15 @@ double solve_k(int num[], double price[], int num_schemes,
             }
         return best;
     }
+}
+
+double solve(int num[], double price[], int num_schemes,
+                double unit_price, int num_items)
+{
+    double best;
+    int i;
+    best = solve_k(num, price, num_schemes, unit_price, num_items);
+    for (i = num_items + 1; i < SIZE; i++)
+        best = min(best, solve_k(num, price, num_schemes, unit_price, i));
+    return best;
 }
