@@ -1,38 +1,38 @@
 /* =========================================================
                     Baby Names
 
-    Given N distinct baby name suggestions (each babyName 
-    string consists of only UPPERCASE alphabet characters of 
-    no more than 30 characters) and the genderSuitability of 
-    that name (integer 1 for male or integer 2 for female) 
-    and given Q queries, tell Kattis how many baby names 
-    start with a prefix that is inside a given query interval 
+    Given N distinct baby name suggestions (each babyName
+    string consists of only UPPERCASE alphabet characters of
+    no more than 30 characters) and the genderSuitability of
+    that name (integer 1 for male or integer 2 for female)
+    and given Q queries, tell Kattis how many baby names
+    start with a prefix that is inside a given query interval
     [start…end), where start<end, and both are strings.
 
     There will be 4 types of commands:
-Stop: This will be indicated by a 0. Stop your program upon 
+Stop: This will be indicated by a 0. Stop your program upon
     encountering this.
-Add Suggestion: This will be indicated by a starting integer 
-    1 followed by a string babyName and an integer 
+Add Suggestion: This will be indicated by a starting integer
+    1 followed by a string babyName and an integer
     genderSuitability, e.g. 1 SIMBA 1.
-Remove Suggestion: This will be indicated by a starting integer 
-    2 followed by a string: babyName, e.g. 2 SIMBA. The babyName 
+Remove Suggestion: This will be indicated by a starting integer
+    2 followed by a string: babyName, e.g. 2 SIMBA. The babyName
     is guaranteed to have already been suggested earlier.
-Query: This will be indicated by a starting integer 3 followed 
-       by two strings: start, end, and an integer genderSuitability. 
-       Your job is to return the number of names that is inside the 
+Query: This will be indicated by a starting integer 3 followed
+       by two strings: start, end, and an integer genderSuitability.
+       Your job is to return the number of names that is inside the
        interval [start…end) subject to the following criteria.
     If genderSuitability = 0: report number of names for both genders
     If genderSuitability = 1: report number of male names
     If genderSuitability = 2: report number of female names
 
-Input: Each line will be a certain command. The program terminates 
-       when it encounters 0. There are up to 200000 babyName 
+Input: Each line will be a certain command. The program terminates
+       when it encounters 0. There are up to 200000 babyName
        suggestions and Q is up to 500000.
 
-Output: Each time the Query command is encountered, the number of 
+Output: Each time the Query command is encountered, the number of
         suitable names should be printed.
-        
+
 ==========================================================*/
 
 #include <stdio.h>
