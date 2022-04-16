@@ -25,7 +25,7 @@ Output: For each test case, output the following:
             - For each integer k, a line containing "Buy k for $ d" where d is 
                 the cheapest way we can buy at least k apples.
 
-This is the recursion solution from Algorithmic Thinking
+This is the memoization solution from Algorithmic Thinking
 Trying Allman style braces for this problem rather than the Kernel style.
 =============================================================================*/
 #include <stdlib.h>
@@ -38,9 +38,11 @@ Trying Allman style braces for this problem rather than the Kernel style.
 double min(double a, double b);
 
 double solve_k(int num[], double price[], int num_schemes, 
-                    double unit_price, int num_items);
+                    double unit_price, int num_items, double memo[]);
 double solve(int num[], double price[], int num_schemes,
-                    double unit_price, int num_items);
+                    double unit_price, int num_items, double memo[]);
+int get_number(int *num);
+long long unsigned int num_calls;
 
 int main()
 {
@@ -48,16 +50,33 @@ int main()
     double unit_price, result;
     int num[MAX_PRICING_SCHEMES];
     double price[MAX_PRICING_SCHEMES];
+    double memo[SIZE];
     test_case = 0;
 
-    while (scanf("%lf %d", &unit_price, &num_schemes) != 1)
+    while (scanf("%lf %d", &unit_price, &num_schemes) == 2)
     {
         test_case++;
+        for (i = 0; i < SIZE; i++)
+            memo[i] = -1;
         for (i = 0; i < num_schemes; i++)
             scanf("%d %lf", &num[i], &price[i]);
         scanf(" "); // read in the newline
-
+        printf("Case: %d\n", test_case);
+        more = get_number(&num_items);
+        while (more)
+        {
+			result = solve(num, price, num_schemes, unit_price,
+			                num_items, memo);
+			printf("Buy %d for $ %.2f\n", num_items, result);
+			printf("Number of times solve_k called: %lld\n", num_calls);
+			more = get_number(&num_items);
+		}
+		result = solve(num, price, num_schemes, unit_price,
+		                num_items, memo);
+		printf("Buy %d for $ %.2f/n", num_items, result);
+		printf("Number times solve_k called: %lld\n", num_calls);
     }
+    
     return EXIT_SUCCESS;
 }
 
@@ -70,37 +89,71 @@ double min(double a, double b)
 }
 
 double solve_k(int num[], double price[], int num_schemes,
-                    double unit_price, int num_items)
+                    double unit_price, int num_items, double memo[])
 {
     double best, result;
     int i;
+    num_calls++;
 
+    if (memo[num_items] != -1)
+        return memo[num_items];
     if (num_items == 0)
-        return 0;
+    {
+		memo[num_items] = 0;
+		printf("solve_k(num, price, %d, %f, %d) = %f\n", num_schemes, unit_price, num_items, memo[num_items]);
+        return memo[num_items];
+	}
     else
     {
         result = solve_k(num, price, num_schemes,
-                            unit_price, num_items - 1);
+                            unit_price, num_items - 1, memo);
         best = result + unit_price;
 
         for (i = 0; i < num_schemes; i++)
             if (num_items - num[i] >= 0)
             {
                 result = solve_k(num, price, num_schemes, 
-                                   unit_price, num_items - num[i]);
+                                 unit_price, num_items - num[i], memo);
                 best = min(best, result + price[i]);
             }
-        return best;
+        memo[num_items] = best;
+        printf("solve_k(num, price, %d, %f, %d) = %f\n", num_schemes, unit_price, num_items, memo[num_items]);
+        return memo[num_items];
     }
 }
 
 double solve(int num[], double price[], int num_schemes,
-                double unit_price, int num_items)
+                double unit_price, int num_items, double memo[])
 {
     double best;
     int i;
-    best = solve_k(num, price, num_schemes, unit_price, num_items);
-    for (i = num_items + 1; i < SIZE; i++)
-        best = min(best, solve_k(num, price, num_schemes, unit_price, i));
+    int largest_scheme = 0;
+    for (i = 0; i < num_schemes; i++)
+        if (num[i] > largest_scheme)
+            largest_scheme = num[i];
+    
+    best = solve_k(num, price, num_schemes, unit_price, 
+                   num_items, memo);
+    printf("Best for exactly %d items: %f\n", num_items, best);
+    for (i = num_items + 1; i <= num_items + largest_scheme; i++)
+        {
+			best = min(best, solve_k(num, price, num_schemes, 
+                                 unit_price, i, memo));
+            printf("Best for up to %d items: %f\n", i, best);
+		}
     return best;
+}
+
+int get_number(int *num)
+{
+	int ch;
+	int ret = 0;
+	ch = getchar();
+	while (ch != ' ' && ch != '\n')
+	{
+		ret = ret * 10 + ch - '0';
+		ch = getchar();
+	}
+	*num = ret;
+	return (ch == ' '); 
 }
