@@ -36,30 +36,42 @@ Output: For each test case, output the number of ways that the marks can be
 
 #define SIZE 70
 
-int solve(int p, int n, int t, int memo[SIZE +1][SIZE + 1]);
+int solve(int n, int t, int p, int memo[SIZE +1][SIZE + 1]);
 
 int main()
 {
+    int i, j, k, cases, p, n, t;
+    int memo[SIZE + 1][SIZE + 1];
+    
+    scanf("%d ", &cases);
+    for (i = 0; i < cases; i++)
+    {
+        for (j = 0; j <= SIZE; j++)
+            for (k = 0; k <= SIZE; k++ )
+                memo[j][k] = -1;
+        scanf("%d %d %d ", &n, &t, &p);
+        printf("%d\n", solve(n, t, p, memo));
+    }
     return EXIT_SUCCESS;
 }
 
-int solve(int p, int n, int t, int memo[SIZE + 1][SIZE + 1])
+int solve(int n, int t, int p, int memo[SIZE + 1][SIZE + 1])
 {
     int total, m;
     if (memo[n][t] != -1)
         return memo[n][t];
     if (n == 0 && t == 0)
     {
-        memo[n][t] = 0;
+        memo[n][t] = 1;
         return memo[n][t];
     }
-    if (n == 0 || t == 0)
+    if (n == 0)
     {
         memo[n][t] = 0;
         return memo[n][t];
     }
     total = 0;
-    for (m = p; m <=t; m++)
+    for (m = p; m <= t; m++)
         total = total + solve(n - 1, t - m, p, memo);
     memo[n][t] = total;
     return memo[n][t];
