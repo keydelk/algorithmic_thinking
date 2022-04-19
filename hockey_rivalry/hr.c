@@ -26,19 +26,46 @@
  * Output:  Print one line with one integer, the maximum possible sum of points
  *          scored in potential rivalry games.
  * 
- * This is the solution from the Algorithmic Thinking book.
+ * This is the memoization solution from the Algorithmic Thinking book.
  * ===========================================================================*/
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
+#define SIZE 1001
+
 int max(int a, int b);
 int solve(char outcome1[], char outcome2[], int goals1[],
-            int goals2[], int i, int j);
+            int goals2[], int i, int j, int memo[SIZE][SIZE]);
             
 int main()
 {
+	int i, j, n, result;
+	char outcome1[SIZE], outcome2[SIZE];
+	int goals1[SIZE], goals2[SIZE];
+	static int memo[SIZE][SIZE];
+
+	scanf("%d ", &n);
+	for (i = 1; i <=n; i++)
+	    scanf("%c", &outcome1[i]);
+	for (i = 1; i <=n; i++)
+	    scanf("%d ", &goals1[i]);
+	for (i = 1; i <=n; i++)
+	    scanf("%c", &outcome2[i]);
+	for (i = 1; i <= n; i++)
+	    scanf("%d ", &goals2[i]);
+    for (i = 0; i <= n; i++)
+	    for (j = 0; j <= n; j++)
+		    memo[i][j] = -1;
+	
+/*	printf("Input recieved: n = %d\n", n);
+	for (i = 1; i <=n; i++)
+	    printf("Game %d: Geese: %c score: %d, Hawks: %c score: %d\n", i, outcome1[i], goals1[i], outcome2[i], goals2[i]);
+*/
+	result = solve(outcome1, outcome2, goals1, goals2, n, n, memo);
+	printf("%d\n", result);
+
 	return EXIT_SUCCESS;
 }
 
@@ -50,6 +77,28 @@ int max(int a, int b)
 }
 
 int solve(char outcome1[], char outcome2[], int goals1[],
-            int goals2[], int i, int j)
+            int goals2[], int i, int j, int memo[SIZE][SIZE])
 {
 	int first, second, third, fourth;
+/*	printf("Solving for Geese game %d: %c %d and Hawk game %d: %c %d\n", i, outcome1[i], goals1[i], j, outcome2[j], goals2[j]);
+*/
+	if (memo[i][j] != -1)
+	    return memo[i][j];
+	if (i == 0 || j == 0)
+	{
+		memo[i][j] = 0;
+		return memo[i][j];
+	}
+	if ((outcome1[i] == 'W' && outcome2[j] == 'L' && goals1[i] > goals2[j]) ||
+	    (outcome1[i] == 'L' && outcome2[j] == 'W' && goals1[i] < goals2[j]))
+		    first = solve(outcome1, outcome2, goals1, goals2, i - 1, j - 1, memo) +
+			        goals1[i] + goals2[j];
+	else
+	        first = 0;
+	second = solve(outcome1, outcome2, goals1, goals2, i - 1, j - 1, memo);
+	third = solve(outcome1, outcome2, goals1, goals2, i - 1, j, memo);
+	fourth = solve(outcome1, outcome2, goals1, goals2, i, j - 1, memo);
+
+	memo[i][j] = max(first, max(second, max(third, fourth)));
+	return memo[i][j];
+}
