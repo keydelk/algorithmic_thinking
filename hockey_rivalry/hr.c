@@ -33,7 +33,11 @@
 #include <stdio.h>
 #include <string.h>
 
+<<<<<<< Updated upstream
 #define SIZE 1001
+=======
+#define SIZE 1000000
+>>>>>>> Stashed changes
 
 int max(int a, int b);
 int solve(char outcome1[], char outcome2[], int goals1[],
@@ -41,6 +45,7 @@ int solve(char outcome1[], char outcome2[], int goals1[],
             
 int main()
 {
+<<<<<<< Updated upstream
 	int i, j, n, result;
 	char outcome1[SIZE], outcome2[SIZE];
 	int goals1[SIZE], goals2[SIZE];
@@ -66,6 +71,25 @@ int main()
 	result = solve(outcome1, outcome2, goals1, goals2, n, n, memo);
 	printf("%d\n", result);
 
+=======
+	int i, n, result;
+	char outcome1[SIZE + 1], outcome2[SIZE + 1];
+	int goals1[SIZE + 1], goals2[SIZE +1];
+	
+	scanf("%d ", &n);
+	for (i = 1; i <= n; i++)
+	    scanf("%c", &outcome1[i];
+	for (i = 1; i <= n; i++)
+	    scanf("%d ", &goals1[i];
+	for (i = 1; i <= n; i++)
+	    scanf("%c", &outcome2[i];
+	for (i = 1, i <= n; i++)
+	    scanf("%d, %goals2[i]);
+	    
+	result = solve(outcome1, outcome2, goals1, goals2, n, n)
+	printf ("%d\n", result);
+	
+>>>>>>> Stashed changes
 	return EXIT_SUCCESS;
 }
 
@@ -80,6 +104,7 @@ int solve(char outcome1[], char outcome2[], int goals1[],
             int goals2[], int i, int j, int memo[SIZE][SIZE])
 {
 	int first, second, third, fourth;
+<<<<<<< Updated upstream
 /*	printf("Solving for Geese game %d: %c %d and Hawk game %d: %c %d\n", i, outcome1[i], goals1[i], j, outcome2[j], goals2[j]);
 */
 	if (memo[i][j] != -1)
@@ -102,3 +127,24 @@ int solve(char outcome1[], char outcome2[], int goals1[],
 	memo[i][j] = max(first, max(second, max(third, fourth)));
 	return memo[i][j];
 }
+=======
+	if (i == 0 || j == 0)
+	    return 0;
+	if ((outcome1[i] == 'W' && outcome2[j] == 'L' &&
+	        goals1[i] > goals2[j]) ||
+	    (outcome1[i] == 'L' && outcome2[j] == 'W' &&
+	        goals1[i] < goals2[j]))
+	{
+		first = solve(outcome1, outcome2, goals1, goals2, i-1, j-1) +
+		          goals1[i] + goals2[i];
+    }
+    else
+        first = 0;
+    
+    second = solve(outcome1, outcome2, goals1, goals2, i - 1, j - 1);
+    third =  solve(outcome1, outcome2, goals1, goals2, i - 1, j);
+    fourth = solve(outcome1, outcome2, goals1, goals2, i, j - 1);
+    return max(first, max(second, max(third, fourth)));
+}
+		
+>>>>>>> Stashed changes
