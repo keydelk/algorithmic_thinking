@@ -46,8 +46,22 @@ typedef position positions[MAX_ROWS * MAX_COLS];
 
 int find_distance(int knight_row, int knight_col, int dest_row, int dest_col,
                     int num_rows, int num_cols);
+void add_position(int from_row, int from_col, int to_row, int to_col,
+                    int num_rows, int num_cols, positions new_positions,
+                    int *num_new_positions, board min_moves);
+void solve(int pawn_row, int pawn_col, int knight_row, int knight_col,
+            int num_rows, int num_cols);
 
 int main() {
+	int num_cases, i;
+	int num_rows, num_cols, pawn_row, pawn_col, knight_row, knight_col;
+	scanf("%d", &num_cases);
+	for (i = 0; i < num_cases; i++) {
+		scanf("%d %d", &num_rows, &num_cols);
+		scanf("%d %d", &pawn_row, &pawn_col);
+		scanf("%d %d", &knight_row, &knight_col);
+		solve(pawn_row, pawn_col, knight_row, knight_col, num_rows, num_cols);
+	}
     return EXIT_SUCCESS;
 }
 
@@ -101,6 +115,56 @@ int find_distance(int knight_row, int knight_col, int dest_row, int dest_col,
 		num_cur_positions = num_new_positions;
 		for (i = 0; i < num_cur_positions; i++) {
 			cur_positions[i] = new_positions[i];
+		}
 	}
-	return -1;		
+	return -1;
 }
+
+void add_position(int from_row, int from_col, int to_row, int to_col,
+                    int num_rows, int num_cols, positions new_positions,
+                    int *num_new_positions, board min_moves) {
+	struct position new_position;
+	
+	if (to_row >= 1 && to_col >= 1 && to_row <= num_rows && to_col <= num_cols &&
+	    min_moves[to_row][to_col] == -1) {
+			min_moves[to_row][to_col] = 1 + min_moves[from_row][from_col];
+			new_position = (position){to_row, to_col};
+			new_positions[*num_new_positions] = new_position;
+			(*num_new_positions)++;
+	}
+}
+
+void solve(int pawn_row, int pawn_col, int knight_row, int knight_col,
+            int num_rows, int num_cols) {
+    int cur_pawn_row, num_moves, knight_takes;
+    
+    cur_pawn_row = pawn_row;
+    num_moves = 0;
+    while (cur_pawn_row < num_rows) {
+		knight_takes = find_distance(knight_row, knight_col, cur_pawn_row,
+		                                 pawn_col, num_rows, num_cols);
+		
+		if (knight_takes == num_moves) {
+			printf("Win in %d knight move(s).\n", num_moves);
+			return;
+		}
+		cur_pawn_row++;
+		num_moves++;
+	}
+	
+	cur_pawn_row = pawn_row;
+	num_moves = 0;
+	while (cur_pawn_row < num_rows) {
+		knight_takes = find_distance(knight_row, knight_col, cur_pawn_row + 1,
+		                               pawn_col, num_rows, num_cols);
+		if (knight_takes == num_moves) {
+			printf("Stalemate in %d knight move(s).\n", num_moves);
+			return;
+		}
+		cur_pawn_row++;
+	    num_moves++;
+	}
+	
+	printf("Loss in %d knight move(s).\n", num_rows - pawn_row - 1);
+}
+		
