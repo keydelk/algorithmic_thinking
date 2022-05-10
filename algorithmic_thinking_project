@@ -29,10 +29,10 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=2177;C;0;EUTF-8;1;1;0;%2Fhome%2Fkeith%2Falgorithmic_thinking%2Fhockey_rivalry%2Fhr.c;0;4
+FILE_NAME_0=5522;C;0;EUTF-8;1;1;0;%2Fhome%2Fkeith%2Falgorithmic_thinking%2Fknight_chase%2Fkc.c;0;4
 
 [VTE]
-last_dir=/home/keith/algorithmic_thinking/moneygrubbers
+last_dir=/home/keith/algorithmic_thinking/knight_chase
 
 [build-menu]
 NF_03_LB=Test
