@@ -131,6 +131,7 @@ void add_position(int from_row, int from_col, int to_row, int to_col,
 			new_position = (position){to_row, to_col};
 			new_positions[*num_new_positions] = new_position;
 			(*num_new_positions)++;
+			printf("Position added - row: %d, col: %d, moves: %d\n", to_row, to_col, min_moves[to_row][to_col]);
 	}
 }
 
