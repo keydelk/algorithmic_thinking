@@ -8,6 +8,7 @@ This is a simple console tic-tac-toe game I'm doing to practice coding in C.
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 void print_board(char board[9]);
 int get_player_move(char board[9]);
@@ -22,6 +23,8 @@ int main()
         board[i] = '0' + i;
     srand(time(NULL));
 
+    /* Clear the screen */
+    printf("\e[1;1H\e[2J");
     printf("Here is the starting board. Indicate your move by typing the number of the space. \n");
     print_board(board);
     
@@ -29,6 +32,7 @@ int main()
         mov = get_player_move(board);
         board[mov] = 'X';
         
+        printf("\e[1;1H\e[2JCurrent Board:\n");
         print_board(board);
         if (is_win(board)) {
             printf("You win!\n");
@@ -37,8 +41,10 @@ int main()
         
         if (i < 4) {
             printf("CPU's turn...\n");
+            sleep(2);
             mov = cpu_move(board);
             board[mov] = 'O';
+            printf("\e[1;1H\e[2JCurrent Board:\n");
             print_board(board);
             if (is_win(board)) {
                 printf("CPU wins!\n");
