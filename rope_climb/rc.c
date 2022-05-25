@@ -63,7 +63,7 @@ void add_position(int from_height, int to_height, int max_height,
                   positions new_positions, int *num_new_positions,
                   int itching[], board min_moves) {
 //    printf("Checking - from: %d \t - to %d\n", from_height, to_height);
-    if (to_height <= max_height && itching[to_height] == 0 && min_moves[to_height] == -1) {
+    if (to_height <= max_height && !itching[to_height] && min_moves[to_height] == -1) {
         min_moves[to_height] = 1 + min_moves[from_height];
         new_positions[*num_new_positions] = to_height;
 //        printf("position added: %d \t - min: %d\n", to_height, min_moves[to_height]);
